@@ -1,0 +1,21 @@
+:root {
+  --app-font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--app-font-family), sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 100vh;
+}
+
