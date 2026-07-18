@@ -3,6 +3,7 @@ import {
   selectAppStatus,
   selectThemeMode,
 } from "@/app/app-slice"
+import { TMDB_LOGO_SHORT } from "@/shared/config/tmdb"
 import { useAppDispatch, useAppSelector } from "@/shared/hooks"
 import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined"
 import MenuIcon from "@mui/icons-material/Menu"
@@ -24,9 +25,6 @@ import { useCallback, useState } from "react"
 import { Link, NavLink } from "react-router"
 import { pxToRem } from "@/shared/theme"
 import { HEADER_SX } from "./Header.styles"
-
-const TMDB_LOGO_SRC =
-  "https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
 
 const NAV_ITEMS = [
   { label: "Main", to: "/" },
@@ -88,7 +86,7 @@ export const Header = () => {
 
           <Box component={Link} to="/" sx={logoBox}>
             <img
-              src={TMDB_LOGO_SRC}
+              src={TMDB_LOGO_SHORT}
               alt="The Movie Database"
               style={logoImg}
             />

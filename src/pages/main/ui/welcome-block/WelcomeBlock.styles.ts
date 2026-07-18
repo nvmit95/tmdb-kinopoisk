@@ -1,8 +1,9 @@
 import { Theme } from "@mui/material/styles"
 import { searchBarButtonSx, searchBarInputSlotSx } from "@/shared/styles"
+import { TMDB_IMAGE_ORIGINAL as TMDB_IMAGE_ORIGINAL_BASE } from "@/shared/config/tmdb"
 import { pxToRem } from "@/shared/theme"
 
-export const TMDB_IMAGE_ORIGINAL = "https://image.tmdb.org/t/p/original"
+export const TMDB_IMAGE_ORIGINAL = TMDB_IMAGE_ORIGINAL_BASE
 
 const BOTTOM_GRADIENT =
   "linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.78) 68%, rgba(0,0,0,1) 100%)"

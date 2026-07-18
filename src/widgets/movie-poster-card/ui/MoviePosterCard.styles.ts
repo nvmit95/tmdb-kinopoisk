@@ -1,12 +1,13 @@
 import type { CSSProperties } from "react"
 import type { Theme } from "@mui/material/styles"
 import { moviePosterRatingBadgeBgColor } from "../model/moviePosterRating"
+import { TMDB_IMAGE_W500 as TMDB_IMAGE_W500_BASE, TMDB_IMAGE_W780 as TMDB_IMAGE_W780_BASE } from "@/shared/config/tmdb"
 import { pxToRem } from "@/shared/theme"
 
-export const TMDB_IMAGE_W500 = "https://image.tmdb.org/t/p/w500"
+export const TMDB_IMAGE_W500 = TMDB_IMAGE_W500_BASE
 
 /** Постер на странице фильма (крупнее, чем в сетке карточек). */
-export const TMDB_IMAGE_W780 = "https://image.tmdb.org/t/p/w780"
+export const TMDB_IMAGE_W780 = TMDB_IMAGE_W780_BASE
 
 export const MOVIE_POSTER_PLACEHOLDER =
   "https://placehold.co/500x750/0f172a/94a3b8/png?text=No+poster"
