@@ -4,6 +4,8 @@
 
 **Demo:** [https://tmdb-kinopoisk-liard.vercel.app/](https://tmdb-kinopoisk-liard.vercel.app/)
 
+> **Важно:** API TMDB в ряде стран (в т.ч. РФ) может быть недоступен напрямую. Если фильмы не грузятся и в Network видно `ERR_CONNECTION_REFUSED` к `api.themoviedb.org` — включите VPN (например, сервер во **Франции** / EU) и обновите страницу.
+
 ## Возможности
 
 - Главная с превью категорий: Popular, Top Rated, Upcoming, Now Playing
