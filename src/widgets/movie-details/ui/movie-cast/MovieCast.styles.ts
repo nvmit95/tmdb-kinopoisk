@@ -1,10 +1,9 @@
-import { TMDB_IMAGE_W185 } from "@/shared/config/tmdb"
 import { pxToRem } from "@/shared/theme"
 
 import { MOVIE_DETAILS_SPACING } from "../../config/movieDetails.constants"
 
-/** База для кадров актёров (`profile_path`). */
-export const TMDB_PROFILE_W185 = TMDB_IMAGE_W185
+/** База для кадров актёров (`profile_path`), см. https://developer.themoviedb.org/reference/movie-credits */
+export const TMDB_PROFILE_W185 = "https://image.tmdb.org/t/p/w185"
 
 /** Когда у актёра нет `profile_path` или картинка не загрузилась (квадрат под круг 160×160) */
 export const CAST_PHOTO_PLACEHOLDER =

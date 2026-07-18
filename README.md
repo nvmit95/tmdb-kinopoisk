@@ -47,13 +47,11 @@ pnpm i
 Скопируйте `.env.example` → `.env` и укажите данные из [TMDB API Settings](https://www.themoviedb.org/settings/api):
 
 ```env
-VITE_BASE_URL=/api/tmdb
+VITE_BASE_URL=https://api.themoviedb.org/3
 VITE_API_KEY=your_tmdb_v4_read_access_token
 ```
 
 > Нужен **API Read Access Token** (v4), не API Key v3.
->
-> `VITE_BASE_URL=/api/tmdb` — same-origin proxy (Vite / Vercel → `api.themoviedb.org`). Прямые запросы к TMDB из РФ часто блокируются (`ERR_CONNECTION_REFUSED`).
 
 ### 3. Запуск
 
@@ -76,10 +74,10 @@ pnpm preview
 
 | Name            | Value                             |
 |-----------------|-----------------------------------|
-| `VITE_BASE_URL` | `/api/tmdb`                       |
+| `VITE_BASE_URL` | `https://api.themoviedb.org/3`    |
 | `VITE_API_KEY`  | ваш TMDB v4 Read Access Token     |
 
-`vercel.json` проксирует `/api/tmdb`, `/api/tmdb-image`, `/api/tmdb-static` на TMDB и SPA-роутинг на `index.html`.
+`vercel.json` настроен на SPA-роутинг (все пути → `index.html`).
 
 ## Разделы приложения
 

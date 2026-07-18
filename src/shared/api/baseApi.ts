@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { TMDB_API_BASE } from "@/shared/config/tmdb"
 import { handleError } from "@/shared/utils"
 import type { ZodTypeAny } from "zod"
 import { ZodError } from "zod"
@@ -14,9 +13,7 @@ type BaseApiExtraOptions = {
 }
 
 const rawBaseQuery = fetchBaseQuery({
-  // Always same-origin proxy (Vite/Vercel → api.themoviedb.org).
-  // Direct calls to api.themoviedb.org often fail with ERR_CONNECTION_REFUSED.
-  baseUrl: TMDB_API_BASE,
+  baseUrl: import.meta.env.VITE_BASE_URL,
 
   prepareHeaders: (headers) => {
     headers.set("Authorization", `Bearer ${import.meta.env.VITE_API_KEY}`)
