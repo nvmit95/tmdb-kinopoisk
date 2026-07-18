@@ -7,12 +7,16 @@ export const PAGE_LAYOUT_SX = {
     minHeight: "50vh",
   },
   container: {
-    px: pxToRem(24),
+    px: { xs: pxToRem(16), sm: pxToRem(24) },
   },
   postersGrid: {
     display: "grid",
-    gap: pxToRem(24),
-    gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+    gap: { xs: pxToRem(16), sm: pxToRem(24) },
+    gridTemplateColumns: {
+      xs: "repeat(2, minmax(0, 1fr))",
+      sm: "repeat(3, minmax(0, 1fr))",
+      md: "repeat(4, minmax(0, 1fr))",
+      lg: "repeat(5, minmax(0, 1fr))",
+    },
   },
 } as const
-

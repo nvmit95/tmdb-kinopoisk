@@ -7,6 +7,7 @@ import type {
   TmdbPagedResponse,
 } from "../model/types"
 import {
+  tmdbMovieCreditsSchema,
   tmdbMovieDetailsSchema,
   tmdbMovieSchema,
   tmdbPagedResponseSchema,
@@ -36,6 +37,7 @@ export const moviesApi = baseApi.injectEndpoints({
       query: (movieId) => ({
         url: `/movie/${movieId}/credits`,
       }),
+      extraOptions: { responseSchema: tmdbMovieCreditsSchema },
     }),
     getSimilarMovies: build.query<TmdbPagedResponse<TmdbMovie>, { movieId: number; page?: number }>({
       query: ({ movieId, page = 1 }) => ({

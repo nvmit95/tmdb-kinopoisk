@@ -10,7 +10,9 @@ export const MovieDetailsPage = () => {
   if (!movieId) {
     return (
       <Container disableGutters sx={MOVIE_DETAILS_PAGE_SX.notFoundContainer}>
-        <Typography sx={MOVIE_DETAILS_PAGE_SX.notFoundText}>Movie not found.</Typography>
+        <Typography sx={MOVIE_DETAILS_PAGE_SX.notFoundText}>
+          Invalid movie id. Open a movie from the catalog or search.
+        </Typography>
       </Container>
     )
   }

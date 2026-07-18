@@ -32,7 +32,6 @@ export const SearchPage = () => {
   const layoutSx = PAGE_LAYOUT_SX
   const searchLayoutSx = SEARCH_PAGE_LAYOUT_SX
 
-  // 🔹 URL = source of truth
   const urlQuery = searchParams.get("query") ?? SEARCH_DEFAULTS.query
   const urlPage = clamp(
     Math.trunc(Number(searchParams.get("page") ?? SEARCH_DEFAULTS.page)),
@@ -83,7 +82,7 @@ export const SearchPage = () => {
   }
 
   return (
-    <Box component="main" sx={searchLayoutSx.root}>
+    <Box sx={searchLayoutSx.root}>
       <Container maxWidth="lg" disableGutters sx={searchLayoutSx.container}>
         <Stack sx={sx.pageStack}>
           <Typography component="h1" sx={sx.title}>

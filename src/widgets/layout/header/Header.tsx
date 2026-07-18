@@ -1,22 +1,26 @@
-
 import {
   changeThemeModeAC,
   selectAppStatus,
   selectThemeMode,
 } from "@/app/app-slice"
 import { useAppDispatch, useAppSelector } from "@/shared/hooks"
+import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined"
+import MenuIcon from "@mui/icons-material/Menu"
+import WbSunnyOutlined from "@mui/icons-material/WbSunnyOutlined"
 import AppBar from "@mui/material/AppBar"
-import Toolbar from "@mui/material/Toolbar"
-import Container from "@mui/material/Container"
-import Typography from "@mui/material/Typography"
+import Box from "@mui/material/Box"
+import Divider from "@mui/material/Divider"
+import Drawer from "@mui/material/Drawer"
 import IconButton from "@mui/material/IconButton"
 import LinearProgress from "@mui/material/LinearProgress"
+import List from "@mui/material/List"
+import ListItemButton from "@mui/material/ListItemButton"
+import ListItemText from "@mui/material/ListItemText"
 import Stack from "@mui/material/Stack"
-import Divider from "@mui/material/Divider"
-import Box from "@mui/material/Box"
-import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined"
-import WbSunnyOutlined from "@mui/icons-material/WbSunnyOutlined"
-import { useCallback } from "react"
+import Toolbar from "@mui/material/Toolbar"
+import Typography from "@mui/material/Typography"
+import Container from "@mui/material/Container"
+import { useCallback, useState } from "react"
 import { Link, NavLink } from "react-router"
 import { pxToRem } from "@/shared/theme"
 import { HEADER_SX } from "./Header.styles"
@@ -31,10 +35,12 @@ const NAV_ITEMS = [
   { label: "Search", to: "/search" },
   { label: "Favorites", to: "/favorites" },
 ] as const
+
 export const Header = () => {
   const dispatch = useAppDispatch()
   const status = useAppSelector(selectAppStatus)
   const themeMode = useAppSelector(selectThemeMode)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   const {
     appBar,
@@ -47,6 +53,9 @@ export const Header = () => {
     themeButton,
     toolbar,
     container,
+    menuButton,
+    drawerPaper,
+    drawerNavItem,
   } = HEADER_SX
 
   const toggleTheme = useCallback(() => {
@@ -57,6 +66,8 @@ export const Header = () => {
     )
   }, [dispatch, themeMode])
 
+  const closeDrawer = () => setMobileOpen(false)
+
   return (
     <AppBar
       position="static"
@@ -66,6 +77,15 @@ export const Header = () => {
     >
       <Toolbar sx={toolbar}>
         <Container maxWidth="lg" disableGutters sx={container}>
+          <IconButton
+            edge="start"
+            aria-label="Open navigation menu"
+            onClick={() => setMobileOpen(true)}
+            sx={menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
+
           <Box component={Link} to="/" sx={logoBox}>
             <img
               src={TMDB_LOGO_SRC}
@@ -75,7 +95,6 @@ export const Header = () => {
           </Box>
 
           <Stack
-            // Stack — для удобного горизонтального/вертикального расположения элементов с gap и divider
             component="nav"
             direction="row"
             divider={
@@ -122,6 +141,30 @@ export const Header = () => {
           </IconButton>
         </Container>
       </Toolbar>
+
+      <Drawer
+        anchor="left"
+        open={mobileOpen}
+        onClose={closeDrawer}
+        ModalProps={{ keepMounted: true }}
+        sx={{ display: { xs: "block", md: "none" } }}
+        slotProps={{ paper: { sx: drawerPaper } }}
+      >
+        <List component="nav" aria-label="Mobile navigation">
+          {NAV_ITEMS.map((item) => (
+            <ListItemButton
+              key={item.to}
+              component={NavLink}
+              to={item.to}
+              end={item.to === "/"}
+              onClick={closeDrawer}
+              sx={(theme) => drawerNavItem(theme)}
+            >
+              <ListItemText primary={item.label} />
+            </ListItemButton>
+          ))}
+        </List>
+      </Drawer>
 
       {status === "loading" && (
         <LinearProgress sx={(theme) => HEADER_SX.linearProgress(theme)} />

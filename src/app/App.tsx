@@ -1,4 +1,5 @@
 import { APP_LAYOUT_SX } from "@/app/App.styles"
+import { ErrorBoundary } from "@/app/ErrorBoundary"
 import { selectThemeMode } from "@/app/app-slice"
 import { Routing } from "@/app/router"
 import { ScrollToTop } from "@/app/router/ScrollToTop"
@@ -27,7 +28,9 @@ export const App = () => {
         <ScrollToTop />
         <Header />
         <Box component="main" sx={APP_LAYOUT_SX.main}>
-          <Routing />
+          <ErrorBoundary>
+            <Routing />
+          </ErrorBoundary>
         </Box>
         <Footer />
         <ErrorSnackbar />

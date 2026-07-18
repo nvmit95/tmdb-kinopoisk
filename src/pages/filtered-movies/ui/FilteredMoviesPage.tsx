@@ -31,7 +31,7 @@ export const FilteredMoviesPage = () => {
   } = useFilteredMoviesPage()
 
   return (
-    <Box component="main" sx={layoutSx.root}>
+    <Box sx={layoutSx.root}>
       <Container
         maxWidth="lg"
         disableGutters

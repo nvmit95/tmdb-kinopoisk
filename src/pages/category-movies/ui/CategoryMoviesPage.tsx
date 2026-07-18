@@ -35,7 +35,6 @@ export const CategoryMoviesPage = () => {
   const sx = CATEGORY_MOVIES_PAGE_SX
   const layoutSx = PAGE_LAYOUT_SX
 
-  // 🔹 URL = source of truth
   const category =
     parseMovieCategoryParam(searchParams.get("category")) ?? CATEGORY_DEFAULT
 
@@ -53,7 +52,6 @@ export const CategoryMoviesPage = () => {
   const showSkeleton = isLoading || (isFetching && !data)
   const pageCount = Math.min(totalPages, TMDB_MAX_PAGE)
 
-  // 🔹 смена категории → сброс страницы
   const selectCategory = (newCategory: MovieCategoryList) => {
     setSearchParams({
       category: newCategory,
@@ -61,7 +59,6 @@ export const CategoryMoviesPage = () => {
     })
   }
 
-  // 🔹 смена страницы
   const changePage = (newPage: number) => {
     setSearchParams({
       category,
@@ -70,7 +67,7 @@ export const CategoryMoviesPage = () => {
   }
 
   return (
-    <Box component="main" sx={layoutSx.root}>
+    <Box sx={layoutSx.root}>
       <Container maxWidth="lg" sx={layoutSx.container}>
         {/* Tabs */}
         <Stack {...sx.tabs}>

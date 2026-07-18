@@ -17,7 +17,13 @@ const MIN_CARDS = 6
 export const SimilarMovies = ({ query }: Props) => {
   const { data, isLoading, isError } = query
 
-  if (isError) return <Typography color="error">Error</Typography>
+  if (isError) {
+    return (
+      <Typography color="text.secondary">
+        Couldn&apos;t load similar movies.
+      </Typography>
+    )
+  }
 
   return (
     <Box>

@@ -22,11 +22,16 @@ export const HEADER_SX = {
     width: "100%",
     minWidth: 0,
   },
+  menuButton: {
+    display: { xs: "inline-flex", md: "none" },
+    flexShrink: 0,
+    mr: pxToRem(4),
+  },
   logoBox: {
     display: "flex",
     alignItems: "center",
-    flexShrink: 0, // запрещает элементу сжиматься внутри flex-контейнера (логотип не будет ужиматься)
-    lineHeight: 0, // убирает лишнюю высоту строки (особенно важно для img, чтобы не было “лишнего воздуха”)
+    flexShrink: 0,
+    lineHeight: 0,
   },
   logoImg: {
     height: pxToRem(24),
@@ -36,13 +41,24 @@ export const HEADER_SX = {
   navStack: {
     flex: 1,
     minWidth: 0,
+    display: { xs: "none", md: "flex" },
   },
+  drawerPaper: {
+    width: pxToRem(280),
+    pt: pxToRem(8),
+  },
+  drawerNavItem: (theme: Theme) => ({
+    color: theme.palette.text.primary,
+    "&.active": {
+      color: theme.palette.primary.main,
+      bgcolor: theme.palette.action.selected,
+    },
+  }),
   navDivider: (theme: Theme) => ({
     borderColor: theme.palette.text.secondary,
     opacity: 0.35,
     alignSelf: "center",
-    height: "1em", // ограничен высотой текста
-    // mx: "0.5rem", // горизонтальные отступы
+    height: "1em",
   }),
   navItem: (theme: Theme) => ({
     px: pxToRem(12),
@@ -104,7 +120,6 @@ export const HEADER_SX = {
     "& .MuiLinearProgress-bar1, & .MuiLinearProgress-bar2": {
       backgroundColor: theme.palette.primary.main,
     },
-    // Замедляем движение indeterminate полос
     "& .MuiLinearProgress-bar1Indeterminate, & .MuiLinearProgress-bar2Indeterminate": {
       animationDuration: "2.6s",
     },

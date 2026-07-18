@@ -11,7 +11,7 @@ const categoryViewMore = (category: MovieCategoryList) =>
 
 export const MainPage = () => {
   return (
-    <Box component="main" sx={MAIN_PAGE_SX.main}>
+    <Box sx={MAIN_PAGE_SX.main}>
       <Stack sx={MAIN_PAGE_SX.stack}>
         <WelcomeBlock />
         <MovieCategoryPreviewSection

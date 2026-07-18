@@ -7,6 +7,7 @@ import { MoviePosterCardSkeleton } from "@/widgets/movie-poster-card/ui/MoviePos
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Stack from "@mui/material/Stack"
+import Typography from "@mui/material/Typography"
 import { FILTERED_MOVIES_RESULTS_SX } from "./FilteredMoviesResults.styles"
 
 type Props = {
@@ -27,26 +28,34 @@ export const FilteredMoviesResults = ({
   postersGridSx,
 }: Props) => {
   const sx = FILTERED_MOVIES_RESULTS_SX
+  const isEmpty = !showSkeleton && movies.length === 0
 
   return (
     <Box>
-      <Box sx={postersGridSx}>
-        {showSkeleton
-          ? Array.from({ length: FILTERED_MOVIES_SKELETON_COUNT }, (_, i) => (
-              <MoviePosterCardSkeleton key={i} />
-            ))
-          : movies.map((movie) => (
-              <MoviePosterCard
-                key={movie.id}
-                movieId={movie.id}
-                title={movie.title}
-                posterPath={movie.poster_path}
-                voteAverage={movie.vote_average}
-              />
-            ))}
-      </Box>
+      {isEmpty ? (
+        <Typography color="text.secondary">
+          No movies match these filters. Try changing genres, rating, or sort
+          order.
+        </Typography>
+      ) : (
+        <Box sx={postersGridSx}>
+          {showSkeleton
+            ? Array.from({ length: FILTERED_MOVIES_SKELETON_COUNT }, (_, i) => (
+                <MoviePosterCardSkeleton key={i} />
+              ))
+            : movies.map((movie) => (
+                <MoviePosterCard
+                  key={movie.id}
+                  movieId={movie.id}
+                  title={movie.title}
+                  posterPath={movie.poster_path}
+                  voteAverage={movie.vote_average}
+                />
+              ))}
+        </Box>
+      )}
 
-      {pageCount > 1 && (
+      {pageCount > 1 && !isEmpty && (
         <Stack alignItems="center" sx={sx.paginationWrap}>
           <Stack direction="row" alignItems="center" gap={1.25}>
             {buildPaginationItems(page, pageCount).map((item, idx) => {

@@ -17,18 +17,29 @@ export const handleError = (
     switch (result.error.status) {
       case "FETCH_ERROR":
       case "PARSING_ERROR":
-      case "CUSTOM_ERROR":
+      case "CUSTOM_ERROR": {
+        const rawError =
+          typeof result.error.error === "string" ? result.error.error : ""
+
+        // Навигация / смена аргументов / unmount — не показываем как ошибку сети
+        if (result.error.status === "FETCH_ERROR" && /abort/i.test(rawError)) {
+          return
+        }
+
         // FETCH_ERROR часто выглядит как "TypeError: Failed to fetch"
+        // (блок API, CORS, краткий обрыв), при этом кэш RTK Query может уже
+        // отдавать данные — поэтому не виним только «интернет».
         if (
           result.error.status === "FETCH_ERROR" &&
-          typeof result.error.error === "string" &&
-          /failed to fetch|networkerror|load failed/i.test(result.error.error)
+          /failed to fetch|networkerror|load failed/i.test(rawError)
         ) {
-          error = "Network error. Check your internet connection."
+          error =
+            "Couldn't reach TMDB API. Please try again in a moment."
         } else {
-          error = result.error.error
+          error = rawError || "Some error occurred"
         }
         break
+      }
       case 401:
         error = "401 Unauthorized. Invalid API key."
         break

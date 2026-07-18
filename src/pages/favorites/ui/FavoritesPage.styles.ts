@@ -21,7 +21,6 @@ export const FAVORITES_PAGE_SX = {
   emptyHint: { m: 0 },
   postersGrid: {
     ...PAGE_LAYOUT_SX.postersGrid,
-    gridTemplateColumns: "repeat(6, minmax(0, 1fr))",
   },
 } as const
 

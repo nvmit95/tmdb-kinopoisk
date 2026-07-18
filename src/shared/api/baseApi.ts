@@ -24,9 +24,11 @@ const rawBaseQuery = fetchBaseQuery({
 export const baseApi = createApi({
   reducerPath: "tmdbKinopoiskApi",
 
-  tagTypes: ["Todolist", "Task"],
+  tagTypes: ["Movie", "Genre"],
 
-  refetchOnFocus: true,
+  // Иначе при возврате на вкладку фоновые рефетчи к TMDB могут упасть,
+  // а кэш уже на экране — ложный snackbar про сеть.
+  refetchOnFocus: false,
   refetchOnReconnect: true,
 
   baseQuery: async (args, api, extraOptions) => {

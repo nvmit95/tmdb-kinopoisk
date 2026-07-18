@@ -42,7 +42,22 @@ export const MovieHeader = ({ query }: Props) => {
   const navigate = useNavigate()
 
   if (isLoading) return <MovieHeaderSkeleton />
-  if (isError || !data) return <Typography color="error">Error</Typography>
+  if (isError || !data) {
+    return (
+      <Stack useFlexGap spacing={2} sx={{ py: 2 }}>
+        <Typography color="error">
+          Couldn&apos;t load movie details. Please try again later.
+        </Typography>
+        <Button
+          variant="outlined"
+          onClick={() => navigate(-1)}
+          sx={{ alignSelf: "flex-start" }}
+        >
+          Back
+        </Button>
+      </Stack>
+    )
+  }
 
   const posterSrc = data.poster_path
     ? `${TMDB_IMAGE_W780}${data.poster_path}`

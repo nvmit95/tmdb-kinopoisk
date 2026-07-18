@@ -12,7 +12,7 @@ export const FavoritesPage = () => {
   const sx = FAVORITES_PAGE_SX
 
   return (
-    <Box component="main" sx={sx.main}>
+    <Box sx={sx.main}>
       <Container maxWidth="lg" disableGutters sx={sx.container}>
         <Stack sx={sx.rootStack}>
           <Stack sx={sx.titleStack}>

@@ -34,8 +34,13 @@ export const MOVIE_PREVIEW_SECTION_SX = {
   }),
   grid: {
     display: "grid",
-    gap: pxToRem(24),
-    gridTemplateColumns: "repeat(6, minmax(0, 1fr))",
+    gap: { xs: pxToRem(16), sm: pxToRem(24) },
+    gridTemplateColumns: {
+      xs: "repeat(2, minmax(0, 1fr))",
+      sm: "repeat(3, minmax(0, 1fr))",
+      md: "repeat(4, minmax(0, 1fr))",
+      lg: "repeat(6, minmax(0, 1fr))",
+    },
   },
 }
 

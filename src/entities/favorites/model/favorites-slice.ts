@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const STORAGE_KEY = "tmdb-kinopoisk-favorites"
 
-/** Поля как в задании: id, title, posterUrl, voteAverage. `posterUrl` — относительный путь постера TMDB (`poster_path` API). */
+/** Stub избранного: `posterUrl` — относительный путь постера TMDB (`poster_path`). */
 export type FavoriteMovieStub = {
   id: number
   title: string
